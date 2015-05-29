@@ -1,0 +1,36 @@
+<% content_for :template_type, 'external' %>
+
+<% content_for :header_content do %>
+          <div class="header-branding">
+            <a href="https://gov.uk" title="Go to the GOV.UK homepage" class="header-logo">
+              <span>GOV.UK</span>
+            </a>
+          </div>
+          <% if content_for? :proposition %>
+            <a href="#proposition-links" class="header-menu-toggle"></a>
+            <div class="header-proposition">
+              <% if defined? yield_content %>
+                <%= yield_content :proposition %>
+              <% else %>
+                <%= yield :proposition %>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="header-bar"></div>
+<% end %>
+
+<% content_for :support_links do %>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/cookies">Cookies</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+            <li>
+              Built by
+              <a href="https://mojdigital.blog.gov.uk/">
+                <abbr title="Ministry of Justice">MOJ</abbr> Digital Services
+              </a>
+            </li>
+          </ul>
+<% end %>
+
+<%= render template: 'layouts/erb/base' %>

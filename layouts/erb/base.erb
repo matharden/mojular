@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js <%= yield :template_type %>">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>
@@ -20,22 +20,9 @@
           <div class="skip-link">
             <a href="#content">Skip to main content</a>
           </div>
-          <div class="header-branding">
-            <a href="https://gov.uk" title="Go to the GOV.UK homepage" class="header-logo">
-              <span>GOV.UK</span>
-            </a>
-          </div>
-          <% if content_for? :proposition %>
-            <a href="#proposition-links" class="header-menu-toggle"></a>
-            <div class="header-proposition">
-              <% if defined? yield_content %>
-                <%= yield_content :proposition %>
-              <% else %>
-                <%= yield :proposition %>
-              <% end %>
-            </div>
+          <% if content_for? :header_content %>
+            <%= (defined? yield_content) ? yield_content(:header_content) : yield(:header_content) %>
           <% end %>
-          <div class="header-bar"></div>
         </div>
     </div>
 
@@ -59,17 +46,9 @@
       <div class="container">
         <div class="support-links">
           <h2 class="u-vh">Support links</h2>
-          <ul>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/cookies">Cookies</a></li>
-            <li><a href="/feedback">Feedback</a></li>
-            <li>
-              Built by
-              <a href="https://mojdigital.blog.gov.uk/">
-                <abbr title="Ministry of Justice">MOJ</abbr> Digital Services
-              </a>
-            </li>
-          </ul>
+          <% if content_for? :support_links %>
+            <%= (defined? yield_content) ? yield_content(:support_links) : yield(:support_links) %>
+          <% end %>
           <div class="open-government-licence">
             <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" class="ogl-logo">
               Open Government Licence

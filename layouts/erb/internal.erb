@@ -1,1 +1,7 @@
+<% content_for :template_type, 'internal' %>
+
+<% content_for :header_content do %>
+  <%= yield :page_title %>
+<% end %>
+
 <%= render template: 'layouts/erb/base' %>
