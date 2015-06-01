@@ -1,7 +1,11 @@
 <% content_for :template_type, 'internal' %>
 
 <% content_for :header_content do %>
-  <%= yield :page_title %>
+  <% if content_for? :page_title %>
+    <div class="app-title">
+      <%= (defined? yield_content) ? yield_content(:page_title) : yield(:page_title) %>
+    </div>
+  <% end %>
 <% end %>
 
 <%= render template: 'layouts/erb/base' %>
